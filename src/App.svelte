@@ -1,3 +1,4 @@
+
 <script>
   import Header from "./lib/Header.svelte";
   import Section from "./lib/Section.svelte";
@@ -42,6 +43,10 @@
   <Section title="Contact">
     <p>Email: <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></p>
   </Section>
+
+  <Section title="Playground">
+    <RandomTest />
+  </Section>
 </main>
 
 <style>
@@ -57,7 +62,3 @@
     gap: 12px;
   }
 </style>
-
-<Section title="Playground">
-  <RandomTest />
-</Section>
