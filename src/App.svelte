@@ -1,64 +1,33 @@
 
-<script>
-  import Header from "./lib/Header.svelte";
-  import Section from "./lib/Section.svelte";
-  import ProjectCard from "./lib/ProjectCard.svelte";
-  import RandomTest from "./lib/RandomTest.svelte";
 
-  const name = "Enguun";
+  let projects = [];
+  let loading = true;
 
-  const projects = [
-    {
-      title: "Perovskite Solar Cell Research",
-      desc: "Thin-film fabrication and optimization (spin-coating, annealing).",
-      tech: ["PV", "Thin Film", "Lab"],
-      link: ""
-    },
-    {
-      title: "HDR Processor (C++)",
-      desc: "Built an HDR processing library and evaluated IMX900 QHDR.",
-      tech: ["C++", "OpenCV", "HDR"],
-      link: ""
-    },
-  ];
+  onMount(async () => {
+    projects = await getProjects();
+    loading = false;
+  });
+  ////////////////////////////////////////////////////////////
+
+  
 </script>
+{#if loading}
+  <p>Loading projects...</p>
 
-<main>
-  <Header {name} />
+{:else if projects.length === 0}
+  <p>No projects yet.</p>
 
-  <Section title="About">
-    <p>
-      Electrical Engineering student at TUS. I’m learning Svelte and building this site step by step.
-    </p>
-  </Section>
-
-  <Section title="Projects">
-    <div class="grid">
-      {#each projects as p}
-        <ProjectCard {...p} />
-      {/each}
-    </div>
-  </Section>
-
-  <Section title="Contact">
-    <p>Email: <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></p>
-  </Section>
-
-  <Section title="Playground">
-    <RandomTest />
-  </Section>
-</main>
-
+{:else}
+  <div class="grid">
+    {#each projects as p (p.id)}
+      <ProjectCard {...p} />
+    {/each}
+  </div>
+{/if}
 <style>
-  main {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 16px;
-    font-family: system-ui;
-    line-height: 1.6;
-  }
   .grid {
     display: grid;
     gap: 12px;
   }
 </style>
+
