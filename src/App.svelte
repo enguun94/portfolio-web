@@ -7,6 +7,7 @@
   <p>
     Electrical Engineering student at TUS.
     This is my portfolio.
+    I'm learning Svelte and this is my first attempt to get better at it.
   </p>
 </main>
 
