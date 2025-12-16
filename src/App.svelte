@@ -2,6 +2,7 @@
   import Header from "./lib/Header.svelte";
   import Section from "./lib/Section.svelte";
   import ProjectCard from "./lib/ProjectCard.svelte";
+  import RandomTest from "./lib/RandomTest.svelte";
 
   const name = "Enguun";
 
@@ -56,3 +57,7 @@
     gap: 12px;
   }
 </style>
+
+<Section title="Playground">
+  <RandomTest />
+</Section>
